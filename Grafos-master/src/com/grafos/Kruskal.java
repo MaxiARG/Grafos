@@ -19,21 +19,7 @@ public class Kruskal {
 	
 	private int minimoCosto;
 
-	public GrafoNDP getGrafo() {
-		return grafo;
-	}
 
-	public int getCantNodos() {
-		return cantNodos;
-	}
-	
-	public int getCantAristas() {
-		return cantAristas;
-	}
-
-	public int getMinimoCosto() {
-		return minimoCosto;
-	}
 	
 	public Kruskal(GrafoNDP grafo) {
 		this.grafo = grafo;
@@ -145,4 +131,19 @@ public class Kruskal {
 		buffer.close();
 	}
 
+	public GrafoNDP getGrafo() {
+		return grafo;
+	}
+
+	public int getCantNodos() {
+		return cantNodos;
+	}
+	
+	public int getCantAristas() {
+		return cantAristas;
+	}
+
+	public int getMinimoCosto() {
+		return minimoCosto;
+	}
 }

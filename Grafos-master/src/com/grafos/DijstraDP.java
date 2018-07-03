@@ -5,10 +5,13 @@ public class DijstraDP{
 	GrafoDP grafo;
 		int inicio;
 		int cantNodos;
+		int vectorDistancias[];
+		
 	public DijstraDP(GrafoDP g, int inicio) {
 		grafo=g;
 		this.inicio=inicio;
 		cantNodos=grafo.getCantNodos();
+		vectorDistancias = new int[cantNodos];
 	}
     // A utility function to find the vertex with minimum distance value,
     // from the set of vertices not yet included in shortest path tree
@@ -38,11 +41,10 @@ public class DijstraDP{
     // Funtion that implements Dijkstra's single source shortest path
     // algorithm for a graph represented using adjacency matrix
     // representation
-    public void dijkstra()
-    {
+    public void dijkstra(){
     	int gr[][]=grafo.getGrafo();
     	
-        int dist[] = new int[cantNodos]; // The output array. dist[i] will hold
+         // The output array. dist[i] will hold
                                  // the shortest distance from src to i
  
         // sptSet[i] will true if vertex i is included in shortest
@@ -52,20 +54,20 @@ public class DijstraDP{
         // Initialize all distances as INFINITE and stpSet[] as false
         for (int i = 0; i < cantNodos; i++)
         {
-            dist[i] = Integer.MAX_VALUE;
+            vectorDistancias[i] = Integer.MAX_VALUE;
             sptSet[i] = false;
         }
  
         // Distance of source vertex from itself is always 0
-        dist[inicio] = 0;
+        vectorDistancias[inicio] =0;
  
         // Find shortest path for all vertices
-        for (int count = 0; count < cantNodos-1; count++)
+        for (int cont = 0; cont < cantNodos-1; cont++)
         {
             // Pick the minimum distance vertex from the set of vertices
             // not yet processed. u is always equal to src in first
             // iteration.
-            int u = minDistance(dist, sptSet);
+            int u = minDistance(vectorDistancias, sptSet);
  
             // Mark the picked vertex as processed
             sptSet[u] = true;
@@ -76,15 +78,16 @@ public class DijstraDP{
  
                 // Update dist[v] only if is not in sptSet, there is an
                 // edge from u to v, and total weight of path from src to
-                // v through u is smaller than current value of dist[v] Integer.MAX_VALUE
+                // v through u is smaller than current value of dist[v] 
                 if (!sptSet[v] && gr[u][v]!=-1 &&
-                        dist[u] != Integer.MAX_VALUE &&
-                        dist[u]+gr[u][v] < dist[v])
-                    dist[v] = dist[u] + gr[u][v];
+                        vectorDistancias[u] != Integer.MAX_VALUE &&
+                        vectorDistancias[u]+gr[u][v] < vectorDistancias[v])
+                    vectorDistancias[v] = vectorDistancias[u] + gr[u][v];
         }
  
         // print the constructed distance array
-        printSolution(dist, cantNodos);
+        printSolution(vectorDistancias, cantNodos);
     }
+
  
 }
