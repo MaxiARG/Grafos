@@ -11,6 +11,7 @@ import java.util.Queue;
 public class Dijkstra {
 
 	private GrafoNDP grafo;
+	private GrafoDP grafo2;
 	private int nodoInicial;
 
 	private int cantNodos;
@@ -19,22 +20,20 @@ public class Dijkstra {
 
 	private static final int INFINITO = -1;
 
-	public int getNodoInicial() {
-		return nodoInicial;
-	}
 
-	public GrafoNDP getGrafo() {
-		return grafo;
-	}
-
-	public int getCantNodos() {
-		return this.cantNodos;
-	}
 
 	public Dijkstra(GrafoNDP grafo, int nodoInicial) {
 		this.grafo = grafo;
 		this.nodoInicial = nodoInicial;
 		this.cantNodos = grafo.getGrafo().getOrdenMatriz();
+		this.nodoTerminado = new boolean[cantNodos];
+		costos = new ArrayList<CostoAlNodo>();
+	}
+	
+	public Dijkstra(GrafoDP grafo, int nodoInicial) {
+		this.grafo2 = grafo;
+		this.nodoInicial = nodoInicial;
+		this.cantNodos = grafo.getCantNodos();
 		this.nodoTerminado = new boolean[cantNodos];
 		costos = new ArrayList<CostoAlNodo>();
 	}
@@ -105,9 +104,6 @@ public class Dijkstra {
 		
 		// muestro solución en consola
 		this.escribirSolucionEnConsola();
-		
-		// escribo la solución completa en un archivo
-		this.escribirSolucionEnArchivo("DIJKSTRA" + "_" + this.cantNodos + "_"+ ".out");
 	}
 
 	private void escribirSolucionEnConsola() {
@@ -150,6 +146,18 @@ public class Dijkstra {
 		}
 		
 		buffer.close();
+	}
+	
+	public int getNodoInicial() {
+		return nodoInicial;
+	}
+
+	public GrafoNDP getGrafo() {
+		return grafo;
+	}
+
+	public int getCantNodos() {
+		return this.cantNodos;
 	}
 	
 }
