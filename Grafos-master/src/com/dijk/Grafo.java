@@ -37,10 +37,8 @@ public class Grafo {
 			while((linea=br.readLine())!=null){
 				valores = linea.split(" ");
 			
-				//Integer nodoInicio = Integer.valueOf(valores[0])-1;
-				//Integer nodoDestino = Integer.valueOf(valores[1])-1;
-				Integer nodoInicio = -1;
-				Integer nodoDestino = -1;
+				Integer nodoInicio = Integer.valueOf(valores[0])-1;
+				Integer nodoDestino = Integer.valueOf(valores[1])-1;
 				Integer costo = Integer.valueOf(valores[2]);
 				if(nodoInicio<nodoDestino) {
 					matrizNodos.insertarEnVector(nodoInicio, nodoDestino , costo);

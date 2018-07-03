@@ -1,4 +1,7 @@
 package com.dijk;
+
+import java.util.PriorityQueue;
+
 public class MatrizSimetrica {
 	private int[] vectorSimetrico;
 	private int orden;
