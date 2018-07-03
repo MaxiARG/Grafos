@@ -70,7 +70,9 @@ public class Dijkstra {
 	}
 
 	public void mostrarResultadoEnConsola() {
-
+			for(int i: vectorCostos) {
+				System.out.println(i);
+			}
 	}
 	public int costoArista(int nroNodoInicio, int nroNodoDestino) {
 		 return grafo.getMatrizNodos().valorEnPosicion(nroNodoInicio, nroNodoDestino);
